@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cola.library.mapper.BookMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cola.library.entity.Book">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="press" property="press" />
+        <result column="publis_time" property="publisTime" />
+        <result column="price" property="price" />
+        <result column="author" property="author" />
+        <result column="binding" property="binding" />
+        <result column="series" property="series" />
+        <result column="isbn" property="isbn" />
+        <result column="pages" property="pages" />
+        <result column="book_group_id" property="bookGroupId" />
+        <result column="img" property="img" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, press, publis_time, price, author, binding, series, isbn, pages, book_group_id, img, create_time, update_time, deleted
+    </sql>
+
+</mapper>

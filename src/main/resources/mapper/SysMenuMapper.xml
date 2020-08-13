@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cola.library.mapper.SysMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cola.library.entity.SysMenu">
+        <id column="id" property="id"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_desc" property="menuDesc"/>
+        <result column="path" property="path"/>
+        <result column="router" property="router"/>
+        <result column="icon" property="icon"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <resultMap id="MenuMap" type="com.cola.library.model.MenuModel">
+        <id column="id" property="id"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="path" property="path"/>
+        <collection property="children" ofType="com.cola.library.model.MenuModel">
+            <id column="id2" property="id"/>
+            <result column="name2" property="menuName"/>
+            <result column="path2" property="path"/>
+        </collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, menu_name, menu_desc, path, router, icon, parent_id, create_time, update_time, deleted
+    </sql>
+
+    <select id="getMenu" resultMap="MenuMap">
+        SELECT
+            t.id,
+            t.menu_name,
+            t.path,
+            t1.id as id2,
+            t1.menu_name as name2,
+            t1.path as path2
+        FROM
+            sys_menu t
+        LEFT JOIN sys_menu t1 ON t.id = t1.parent_id
+        WHERE
+            t.parent_id = 0
+        ORDER BY
+            t.order_by ASC
+    </select>
+
+</mapper>
