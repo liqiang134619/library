@@ -8,9 +8,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -49,8 +52,10 @@ public class Book implements Serializable {
     /**
      * 出版时间
      */
-    @TableField("publis_time")
-    private String publisTime;
+    @TableField("publish_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private String publishTime;
 
     /**
      * 定价
@@ -79,9 +84,6 @@ public class Book implements Serializable {
     @TableField("pages")
     private Integer pages;
 
-    @TableField("book_group_id")
-    private Integer bookGroupId;
-
     @TableField("img")
     private String img;
 
@@ -93,6 +95,11 @@ public class Book implements Serializable {
 
     @TableField("deleted")
     private Integer deleted;
+
+    private Integer inventory;
+
+    private Integer category;
+
 
 
 }

@@ -3,6 +3,7 @@ package com.cola.library.service.itf;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cola.library.entity.Book;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cola.library.model.BookDTO;
 import com.cola.library.model.req.BaseReq;
 import com.cola.library.model.req.BookReq;
 
@@ -16,5 +17,7 @@ import com.cola.library.model.req.BookReq;
  */
 public interface IBookService extends IService<Book> {
 
-    Page<Book> listBook(BookReq bookReq);
+    Page<BookDTO> listBook(BookReq bookReq);
+
+    boolean addBook(Book book);
 }

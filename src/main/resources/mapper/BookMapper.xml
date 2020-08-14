@@ -7,7 +7,7 @@
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="press" property="press" />
-        <result column="publis_time" property="publisTime" />
+        <result column="publish_time" property="publishTime" />
         <result column="price" property="price" />
         <result column="author" property="author" />
         <result column="binding" property="binding" />
@@ -25,5 +25,29 @@
     <sql id="Base_Column_List">
         id, name, press, publis_time, price, author, binding, series, isbn, pages, book_group_id, img, create_time, update_time, deleted
     </sql>
+    <select id="listBook" resultType="com.cola.library.model.BookDTO">
+       SELECT
+        t.id,
+         NAME,
+         press,
+         publish_time as publishTime,
+         price,
+         author,
+         binding,
+         isbn,
+         inventory,
+         t1.book_group_name AS category
+        FROM
+            book t
+        LEFT JOIN book_group t1 ON t.category = t1.id
+        <where>
+            <if test="p.type == 1">
+                t.author like concat(concat('%',#{p.query}),'%')
+            </if>
+            <if test="p.type == 2">
+                t.name like concat(concat('%',#{p.query}),'%')
+            </if>
+        </where>
+    </select>
 
 </mapper>

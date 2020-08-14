@@ -1,8 +1,6 @@
 server:
   port: 8080
 
-
-
 spring:
   application:
     name: library
@@ -39,18 +37,18 @@ mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
   type-aliases-package: com.cola.library.entity
   configuration:
-#     ╢Рс║sqlсО╬Д
+#     О©╫О©╫с║sqlО©╫О©╫О©╫
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    # йЩ╬щ©БапцШоб╩╝оъапцВв╙╩╩му╥Е д╛хож╣true й╣лЕюЮ©и╡╩сцв╒╫Б╠Йй╤
+    # О©╫О©╫О©╫щ©О©╫О©╫О©╫О©╫О©╫О©╫б╩О©╫О©╫О©╫О©╫О©╫О©╫О©╫в╙О©╫О©╫О©╫у╥О©╫ д╛О©╫О©╫ж╣true й╣О©╫О©╫О©╫О©╫и╡О©╫О©╫О©╫в╒О©╫О©╫О©╫й╤
     map-underscore-to-camel-case: true
     cache-enabled: false
     local-cache-scope: statement
   global-config:
     db-config:
-      # ╠МцШ║╒йг╥Яй╧сцоб╩╝оъцЭцШё╛д╛хойЩ╬щ©Б╠Мй╧сцоб╩╝оъцЭцШ д╛хож╣t rue  й╣лЕюЮ©и╡╩сцв╒╫Б╠Йй╤
+      # О©╫О©╫О©╫О©╫О©╫О©╫О©╫г╥О©╫й╧О©╫О©╫О©╫б╩О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╛О©╫О©╫О©╫О©╫О©╫щ©О©╫О©╫й╧О©╫О©╫О©╫б╩О©╫О©╫О©╫О©╫О©╫О©╫О©╫ д╛О©╫О©╫ж╣t rue  й╣О©╫О©╫О©╫О©╫и╡О©╫О©╫О©╫в╒О©╫О©╫О©╫й╤
       table-underline: true
-      logic-not-delete-value: 0 # бъ╪╜н╢и╬ЁЩж╣(д╛хон╙ 0)
-      logic-delete-value: 1 # бъ╪╜ряи╬ЁЩж╣(д╛хон╙ 1)
+      logic-not-delete-value: 0 # О©╫ъ╪О©╫н╢и╬О©╫О©╫ж╣(д╛О©╫О©╫н╙ 0)
+      logic-delete-value: 1 # О©╫ъ╪О©╫О©╫О©╫и╬О©╫О©╫ж╣(д╛О©╫О©╫н╙ 1)
 #logging:
 #  config: classpath:logback-spring.xml
 

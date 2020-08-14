@@ -44,9 +44,9 @@ public class MapperTest {
 
 
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 2; i++) {
 
-            String url = "https://book.douban.com/tag/%E5%B0%8F%E8%AF%B4?start="+(40+(i*20))+"&type=T";
+            String url = "https://book.douban.com/tag/%E7%A7%91%E5%AD%A6?start=100&type=T";
 
             Document document = Jsoup.connect(url).get();
 
@@ -101,7 +101,7 @@ public class MapperTest {
                 String substring = price.substring(0, price.length() - 1);
                 BigDecimal bigDecimal = new BigDecimal(substring);
                 book.setPrice(bigDecimal);
-                book.setPublisTime(publishTime).setSeries(ser);
+                book.setPublishTime(publishTime).setSeries(ser);
                 bookList.add(book);
 
             }
