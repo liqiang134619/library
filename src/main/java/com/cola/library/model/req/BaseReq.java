@@ -27,7 +27,7 @@ public abstract class BaseReq  implements Serializable {
 
     private Integer getLimit() {
         if(this.limit == null) {
-            this.limit = 1;
+            this.limit = 10;
         }
         return  this.limit;
     }

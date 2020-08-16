@@ -1,10 +1,8 @@
 package com.cola.library.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +20,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("book_group")
-public class BookGroup implements Serializable {
+public class BookGroup  extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -38,14 +36,6 @@ public class BookGroup implements Serializable {
     @TableField("book_group_name")
     private String bookGroupName;
 
-    @TableField("create_time")
-    private LocalDateTime createTime;
-
-    @TableField("update_time")
-    private LocalDateTime updateTime;
-
-    @TableField("deleted")
-    private Integer deleted;
 
 
 }

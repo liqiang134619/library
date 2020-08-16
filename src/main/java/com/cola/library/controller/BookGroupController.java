@@ -1,15 +1,15 @@
 package com.cola.library.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cola.library.common.ApiResponse;
 import com.cola.library.entity.BookGroup;
+import com.cola.library.model.req.BookReq;
 import com.cola.library.service.itf.IBookGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,10 +29,21 @@ public class BookGroupController {
     IBookGroupService bookGroupService;
 
     @GetMapping("")
-    public ApiResponse getBookGroupList() {
-        List<BookGroup> list = bookGroupService.list();
-        return ApiResponse.ofSuccess(list);
+    public ApiResponse getBookGroupList(BookReq bookReq) {
+        Page<BookGroup> page = bookReq.getPage(BookGroup.class);
+        Page<BookGroup> page1 = bookGroupService.page(page);
+        return ApiResponse.ofSuccess(page1.getRecords(),page1.getTotal());
     }
+
+    @DeleteMapping("/del/{id}")
+    public ApiResponse delBookGroup(@PathVariable Integer id) {
+        boolean remove = bookGroupService.removeById(id);
+        if(!remove) {
+            return ApiResponse.ofFailed();
+        }
+        return ApiResponse.ofSuccess();
+    }
+
 
 
 }

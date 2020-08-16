@@ -14,7 +14,7 @@
         <result column="series" property="series" />
         <result column="isbn" property="isbn" />
         <result column="pages" property="pages" />
-        <result column="book_group_id" property="bookGroupId" />
+        <result column="category" property="category" />
         <result column="img" property="img" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
@@ -25,7 +25,7 @@
     <sql id="Base_Column_List">
         id, name, press, publis_time, price, author, binding, series, isbn, pages, book_group_id, img, create_time, update_time, deleted
     </sql>
-    <select id="listBook" resultType="com.cola.library.model.BookDTO">
+    <select id="listBook" resultType="com.cola.library.model.dto.BookDTO">
        SELECT
         t.id,
          NAME,
@@ -40,14 +40,13 @@
         FROM
             book t
         LEFT JOIN book_group t1 ON t.category = t1.id
-        <where>
-            <if test="p.type == 1">
-                t.author like concat(concat('%',#{p.query}),'%')
-            </if>
-            <if test="p.type == 2">
-                t.name like concat(concat('%',#{p.query}),'%')
-            </if>
-        </where>
+        where t.deleted = 0
+        <if test="p.type == 1 and p.query != null and p.query != ''">
+            and t.author like concat(concat('%',#{p.query}),'%')
+        </if>
+        <if test="p.type == 2 and p.query != null and p.query != ''">
+            and t.name like concat(concat('%',#{p.query}),'%')
+        </if>
     </select>
 
 </mapper>

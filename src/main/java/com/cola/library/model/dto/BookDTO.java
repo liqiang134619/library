@@ -1,4 +1,4 @@
-package com.cola.library.model;
+package com.cola.library.model.dto;
 
 import lombok.Data;
 

@@ -3,7 +3,7 @@ package com.cola.library.mapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cola.library.entity.Book;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.cola.library.model.BookDTO;
+import com.cola.library.model.dto.BookDTO;
 import com.cola.library.model.req.BookReq;
 import org.apache.ibatis.annotations.Param;
 

@@ -27,7 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("book")
-public class Book implements Serializable {
+public class Book extends BaseEntity implements  Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -87,14 +87,6 @@ public class Book implements Serializable {
     @TableField("img")
     private String img;
 
-    @TableField("create_time")
-    private LocalDateTime createTime;
-
-    @TableField("update_time")
-    private LocalDateTime updateTime;
-
-    @TableField("deleted")
-    private Integer deleted;
 
     private Integer inventory;
 

@@ -4,17 +4,11 @@ package com.cola.library.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cola.library.common.ApiResponse;
 import com.cola.library.entity.Book;
-import com.cola.library.model.BookDTO;
-import com.cola.library.model.MenuModel;
-import com.cola.library.model.req.BaseReq;
+import com.cola.library.model.dto.BookDTO;
 import com.cola.library.model.req.BookReq;
 import com.cola.library.service.itf.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.stereotype.Controller;
-
-import java.util.List;
 
 /**
  * <p> 前端控制器
@@ -51,6 +45,16 @@ public class BookController {
     public ApiResponse getBook(@RequestParam("id") Integer id) {
         Book byId = bookService.getById(id);
         return ApiResponse.ofSuccess(byId);
+    }
+
+    @DeleteMapping("/{id}")
+    public ApiResponse deleteBook(@PathVariable Integer id) {
+        boolean b = bookService.deleteBook(id);
+
+        if(!b) {
+            return ApiResponse.ofFailed();
+        }
+        return ApiResponse.ofSuccess();
     }
 
 
