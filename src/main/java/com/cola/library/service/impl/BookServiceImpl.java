@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cola.library.entity.Book;
 import com.cola.library.mapper.BookMapper;
 import com.cola.library.model.dto.BookDTO;
+import com.cola.library.model.req.AvailableBookModel;
 import com.cola.library.model.req.BookReq;
 import com.cola.library.service.itf.IBookService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -41,5 +42,12 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements IB
     @Transactional(rollbackFor = Exception.class)
     public boolean deleteBook(Integer id) {
         return this.removeById(id);
+    }
+
+    @Override
+    public Page<Book> listAvailableBook(AvailableBookModel model) {
+        Page<Book> page = model.getPage(Book.class);
+        List<Book> bookList = baseMapper.listAvailableBook(page);
+        return page.setRecords(bookList);
     }
 }

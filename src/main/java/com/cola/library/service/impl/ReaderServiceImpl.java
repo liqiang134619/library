@@ -55,4 +55,17 @@ public class ReaderServiceImpl extends ServiceImpl<ReaderMapper, Reader> impleme
 
         return save(reader);
     }
+
+    @Override
+    public void listReaderCanBorrow(ReaderReq readerReq) {
+        baseMapper.listReaderCanBorrow(readerReq);
+    }
+
+    @Override
+    public Page<ReaderDTO> listCanReader(ReaderReq readerReq) {
+
+        Page<ReaderDTO> page = readerReq.getPage(ReaderDTO.class);
+        List<ReaderDTO> readerDTOList =  baseMapper.listCanReader(page,readerReq);
+        return page.setRecords(readerDTOList);
+    }
 }

@@ -34,5 +34,16 @@
             and id_card like concat(concat('%',#{param2.idCard}),'%')
         </if>
     </select>
+    <select id="listReaderCanBorrow">
+        select * from reader
+    </select>
+    <select id="listCanReader" resultType="com.cola.library.model.dto.ReaderDTO">
+        select id, name, id_card as idCard, phone, register_time as registerTime, type, status
+        from reader
+        where deleted = 0 and status = 0
+        <if test="param2.idCard != null and param2.idCard !=''">
+            and id_card like concat(concat('%',#{param2.idCard}),'%')
+        </if>
+    </select>
 
 </mapper>

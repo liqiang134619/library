@@ -18,7 +18,8 @@ import java.util.List;
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
     /**
-     * 菜单列表
+     * 获取菜单
+     * @return 菜单列表
      */
     List<MenuModel> getMenu();
 

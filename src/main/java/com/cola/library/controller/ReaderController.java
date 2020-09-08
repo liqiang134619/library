@@ -28,6 +28,11 @@ public class ReaderController {
     IReaderService readerService;
 
 
+    /**
+     * 添加读者
+     * @param readerModel
+     * @return
+     */
     @PostMapping("/add")
     public ApiResponse addReader(@RequestBody ReaderModel readerModel) {
 
@@ -38,6 +43,11 @@ public class ReaderController {
         return ApiResponse.ofSuccess();
     }
 
+    /**
+     * 查询读者信息
+     * @param readerReq 请求参数封装
+     * @return
+     */
     @GetMapping("")
     public ApiResponse listReader(ReaderReq readerReq) {
         Page<ReaderDTO> page = readerService.listReader(readerReq);
@@ -45,6 +55,11 @@ public class ReaderController {
     }
 
 
+    /**
+     * 更新读者的状态
+     * @param id
+     * @return
+     */
     @PutMapping("/state/{id}")
     public ApiResponse updateReaderState(@PathVariable Integer id) {
         boolean update = readerService.updateReaderState(id);
@@ -54,6 +69,11 @@ public class ReaderController {
         return ApiResponse.ofSuccess();
     }
 
+    /**
+     * 逻辑删除读者信息
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{id}")
     public ApiResponse delReader(@PathVariable Integer id) {
         boolean remove = readerService.removeById(id);
@@ -63,11 +83,18 @@ public class ReaderController {
         return ApiResponse.ofSuccess();
     }
 
+    /**
+     * 根据id获取读者信息
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public ApiResponse getOne(@PathVariable Integer id) {
         Reader byId = readerService.getById(id);
         return ApiResponse.ofSuccess(byId);
     }
+
+
 
 }
 

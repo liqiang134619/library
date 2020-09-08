@@ -26,4 +26,18 @@ public interface ReaderMapper extends BaseMapper<Reader> {
      * @return
      */
     List<ReaderDTO> listReader(Page<ReaderDTO> page, @Param("param2") ReaderReq readerReq);
+
+    /**
+     * 查询可借阅读者信息
+     * @param readerReq
+     */
+    void listReaderCanBorrow(ReaderReq readerReq);
+
+    /**
+     * 查询可借阅读者信息
+     * @param page
+     * @param readerReq
+     * @return
+     */
+    List<ReaderDTO> listCanReader(Page<ReaderDTO> page, ReaderReq readerReq);
 }

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cola.library.common.ApiResponse;
 import com.cola.library.entity.Book;
 import com.cola.library.model.dto.BookDTO;
+import com.cola.library.model.req.AvailableBookModel;
 import com.cola.library.model.req.BookReq;
 import com.cola.library.service.itf.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,19 @@ public class BookController {
             return ApiResponse.ofFailed();
         }
         return ApiResponse.ofSuccess();
+    }
+
+
+    /**
+     * 查询可借阅的图书列表
+     * @return
+     */
+    @GetMapping("/available")
+    public ApiResponse listAvailableBook(AvailableBookModel model) {
+
+        Page<Book> page = bookService.listAvailableBook(model);
+
+        return ApiResponse.ofSuccess(page.getRecords(),page.getTotal());
     }
 
 

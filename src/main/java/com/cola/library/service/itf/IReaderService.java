@@ -37,4 +37,18 @@ public interface IReaderService extends IService<Reader> {
      * @return
      */
     boolean addReader(ReaderModel readerModel);
+
+    /**
+     * 查询可以借阅的人员
+     * @param readerReq
+     */
+    void listReaderCanBorrow(ReaderReq readerReq);
+
+    /**
+     * 查询可借图书的读者 基本逻辑同
+     * @link listReader
+     * @param readerReq
+     * @return
+     */
+    Page<ReaderDTO> listCanReader(ReaderReq readerReq);
 }
