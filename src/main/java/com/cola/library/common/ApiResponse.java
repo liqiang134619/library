@@ -1,12 +1,13 @@
 package com.cola.library.common;
 
+import com.cola.library.exeption.CommonException;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
  * @author liq
- * @date 2020/2/5
+ * @date 2020/7/5
  */
 @Data
 @SuppressWarnings("unchecked")
@@ -170,9 +171,9 @@ public class ApiResponse<T> implements Serializable {
      * @param <T> 异常
      * @return ApiResponse
      */
-//    public static <T extends CommonException> ApiResponse ofException(T t) {
-//        return of(t.getCode(), t.getMessage(), Constant.EMPTY_STR, 0L);
-//    }
+    public static <T extends CommonException> ApiResponse ofException(T t) {
+        return of(t.getCode(), t.getMessage(), Constant.EMPTY_STR, 0L);
+    }
 
 
 }

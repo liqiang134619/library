@@ -17,5 +17,5 @@ public class ReaderModel {
 
     private Integer status;
 
-    private String type;
+    private Integer type;
 }

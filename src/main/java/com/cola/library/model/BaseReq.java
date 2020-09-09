@@ -1,4 +1,4 @@
-package com.cola.library.model.req;
+package com.cola.library.model;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.annotation.JsonIgnore;

@@ -1,5 +1,6 @@
 package com.cola.library.model.req;
 
+import com.cola.library.model.BaseReq;
 import lombok.Data;
 
 import java.io.Serializable;

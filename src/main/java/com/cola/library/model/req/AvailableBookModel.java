@@ -1,5 +1,6 @@
 package com.cola.library.model.req;
 
+import com.cola.library.model.BaseReq;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,6 +10,6 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class AvailableBookModel extends BaseReq{
+public class AvailableBookModel extends BaseReq {
 
 }

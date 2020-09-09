@@ -1,9 +1,8 @@
 package com.cola.library.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,14 +20,14 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("borrow")
-public class Borrow implements Serializable {
+public class Borrow extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
     /**
      * 主键，自增
      */
-    @TableId("id")
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -73,17 +72,6 @@ public class Borrow implements Serializable {
     @TableField("reborrow_time")
     private LocalDateTime reborrowTime;
 
-    /**
-     * 创建时间
-     */
-    @TableField("create_time")
-    private LocalDateTime createTime;
-
-    /**
-     * 更新时间
-     */
-    @TableField("update_time")
-    private LocalDateTime updateTime;
 
     /**
      * 操作人

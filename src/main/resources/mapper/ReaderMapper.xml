@@ -16,10 +16,6 @@
         <result column="deleted" property="deleted" />
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        id, name, id_card, phone, register_time, type, status, create_time, update_time, deleted
-    </sql>
     <select id="listReader" resultType="com.cola.library.model.dto.ReaderDTO">
         select id, name, id_card as idCard, phone, register_time as registerTime, type, status
         from reader
@@ -42,7 +38,7 @@
         from reader
         where deleted = 0 and status = 0
         <if test="param2.idCard != null and param2.idCard !=''">
-            and id_card like concat(concat('%',#{param2.idCard}),'%')
+            and id_card = #{param2.idCard}
         </if>
     </select>
 

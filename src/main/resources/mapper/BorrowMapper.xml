@@ -17,9 +17,35 @@
         <result column="op_by" property="opBy" />
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        id, reader_id, book_id, borrow_time, return_time, status, borrow_day, reborrow_time, create_time, update_time, op_by
-    </sql>
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BorrowedResult" type="com.cola.library.model.dto.BorrowDTO">
+        <id column="id" property="id" />
+        <result column="borrow_time" property="borrowTime" />
+        <result column="return_time" property="returnTime" />
+        <result column="status" property="status" />
+        <result column="op_by" property="opBy" />
+        <result column="user_name" property="userName"/>
+        <result column="book_name" property="bookName"/>
+    </resultMap>
+
+
+
+
+    <select id="listBorrowedReader" resultMap="BorrowedResult">
+        select t2.name as user_name ,t3.name as book_name,t1.id,t1.borrow_time,t1.return_time,t1.op_by,t1.status
+        from borrow t1
+            join reader t2 on (t2.id = t1.reader_id and t2.deleted = 0)
+            join book t3 on (t3.id=t1.book_id and t3.deleted = 0)
+        <where>
+            <if test="p1.name != null and p1.name != ''">
+                t2.name  like concat(concat('%',#{p1.name}),'%')
+            </if>
+            <if test="p1.book != null and p1.book != ''">
+                and t3.name  like concat(concat('%',#{p1.book}),'%')
+            </if>
+        </where>
+        order by borrow_time desc
+    </select>
+
 
 </mapper>

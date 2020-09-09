@@ -58,7 +58,7 @@ public class Reader extends BaseEntity implements Serializable {
      * 类型
      */
     @TableField("type")
-    private String type;
+    private Integer type;
 
     /**
      * 借书状态
