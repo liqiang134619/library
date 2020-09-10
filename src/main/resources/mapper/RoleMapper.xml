@@ -13,6 +13,41 @@
         <result column="deleted" property="deleted" />
     </resultMap>
 
+    <resultMap id="RoleMenuList" type="com.cola.library.model.dto.RoleMenuDTO">
+        <id column="role_id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="role_desc" property="roleDesc"/>
+        <collection property="children" ofType="com.cola.library.model.sys.RoleMenuModel">
+            <id column="menu_id1" property="id"/>
+            <result column="menu_name1" property="menuName"/>
+            <collection property="children" ofType="com.cola.library.model.sys.RoleMenuModel">
+                <id column="menu_id2" property="id"/>
+                <result column="menu_name2" property="menuName"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="listTreeRoleMenu" resultMap="RoleMenuList">
+        SELECT
+            t1.id AS role_id,
+            t1.role_desc as role_desc,
+            t1.role_name AS role_name,
+            t1.role_code AS role_code,
+            t3.id AS menu_id1,
+            t3.menu_name AS menu_name1,
+            t4.id AS menu_id2,
+            t4.menu_name AS menu_name2
+        FROM
+            role t1
+                JOIN role_menu t2 ON ( t1.id = t2.role_id and t2.deleted = 0 and t1.deleted = 0)
+                JOIN sys_menu t3 ON ( t3.id = t2.menu_id and t2.deleted = 0 and t3.deleted = 0)
+                LEFT JOIN (select tt.* from sys_menu tt join role_menu ttt on (ttt.menu_id = tt.id and ttt.deleted = 0)) t4 ON ( t4.parent_id = t3.id and t4.deleted = 0 and t3.deleted = 0)
+        WHERE
+            t3.parent_id = 0
+        ORDER BY
+            t3.order_by ASC
+    </select>
 
 
 </mapper>

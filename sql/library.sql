@@ -11,7 +11,7 @@
  Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 09/09/2020 23:40:46
+ Date: 11/09/2020 02:14:27
 */
 
 SET NAMES utf8mb4;
@@ -272,7 +272,61 @@ CREATE TABLE `role` (
   `update_time` datetime DEFAULT NULL,
   `deleted` smallint(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+BEGIN;
+INSERT INTO `role` VALUES (1, '超级管理员', 'admin', '超级管理员', '2020-09-10 19:50:04', '2020-09-10 19:50:08', 0);
+INSERT INTO `role` VALUES (2, '馆长', 'curator', '馆长', '2020-09-10 19:51:23', '2020-09-10 19:51:26', 0);
+INSERT INTO `role` VALUES (3, '馆员', 'employee', '普通馆员', '2020-09-10 19:52:04', '2020-09-10 19:52:06', 0);
+INSERT INTO `role` VALUES (4, '测试角色', 'eee9144aa7624c85b37d14cc10798333', '这是一个测试角色', '2020-09-11 02:01:01', '2020-09-11 02:01:01', 1);
+INSERT INTO `role` VALUES (5, '测试2', '45e4baeb6c0743208543ffe8f7b3d25b', '这是一个角色测试', '2020-09-11 02:01:41', '2020-09-11 02:01:41', 1);
+INSERT INTO `role` VALUES (6, '测试2', '3459608fcc1e451ca32828235e8d9692', '这是一个测试角色', '2020-09-11 02:02:13', '2020-09-11 02:02:13', 0);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for role_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `role_menu`;
+CREATE TABLE `role_menu` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+  `role_id` int(11) DEFAULT NULL COMMENT '角色id',
+  `menu_id` int(11) DEFAULT NULL COMMENT '菜单id',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `deleted` smallint(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of role_menu
+-- ----------------------------
+BEGIN;
+INSERT INTO `role_menu` VALUES (1, 1, 1, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (2, 1, 2, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (3, 1, 3, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (4, 1, 4, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (5, 1, 5, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (6, 1, 6, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (7, 1, 7, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (8, 1, 8, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (9, 1, 9, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (10, 1, 10, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (11, 1, 11, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (12, 1, 12, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (13, 1, 13, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (14, 1, 14, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (15, 1, 15, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (16, 1, 16, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (17, 1, 17, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (18, 1, 18, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (19, 1, 19, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (20, 1, 20, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (21, 1, 21, '2020-09-10 20:20:58', '2020-09-10 20:21:03', 0);
+INSERT INTO `role_menu` VALUES (24, 1, 22, '2020-09-11 00:39:18', '2020-09-11 00:39:34', 0);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -291,7 +345,7 @@ CREATE TABLE `sys_menu` (
   `deleted` int(11) DEFAULT NULL COMMENT '删除标记',
   `order_by` int(16) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -302,20 +356,17 @@ INSERT INTO `sys_menu` VALUES (2, '图书管理', NULL, NULL, NULL, NULL, 0, '20
 INSERT INTO `sys_menu` VALUES (3, '借还管理', NULL, NULL, NULL, NULL, 0, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, 3);
 INSERT INTO `sys_menu` VALUES (5, '报表分析', NULL, NULL, NULL, NULL, 0, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, 4);
 INSERT INTO `sys_menu` VALUES (6, '馆员管理', NULL, '/users', NULL, NULL, 1, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
-INSERT INTO `sys_menu` VALUES (7, '修改密码', NULL, NULL, NULL, NULL, 1, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
-INSERT INTO `sys_menu` VALUES (8, '系统维护', NULL, NULL, NULL, NULL, 1, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
+INSERT INTO `sys_menu` VALUES (7, '角色管理', NULL, '/roles', NULL, NULL, 1, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
 INSERT INTO `sys_menu` VALUES (9, '读者类别', NULL, '/readercate', NULL, NULL, 12, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
 INSERT INTO `sys_menu` VALUES (11, '读者信息', NULL, '/reader', NULL, NULL, 12, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
 INSERT INTO `sys_menu` VALUES (12, '读者管理', NULL, NULL, NULL, NULL, 0, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, 2);
 INSERT INTO `sys_menu` VALUES (13, '图书类别', NULL, '/bookcate', NULL, NULL, 2, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
 INSERT INTO `sys_menu` VALUES (14, '借书处理', NULL, '/borrow', NULL, NULL, 3, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
 INSERT INTO `sys_menu` VALUES (15, '还书处理', NULL, '/returnbook', NULL, NULL, 3, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
-INSERT INTO `sys_menu` VALUES (16, '预约处理', NULL, NULL, NULL, NULL, 3, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
-INSERT INTO `sys_menu` VALUES (17, '续借处理', NULL, NULL, NULL, NULL, 3, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
-INSERT INTO `sys_menu` VALUES (18, '催还处理', NULL, NULL, NULL, NULL, 3, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
 INSERT INTO `sys_menu` VALUES (19, '图书类别分析', NULL, NULL, NULL, NULL, 5, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
 INSERT INTO `sys_menu` VALUES (20, '借还时间分析', NULL, NULL, NULL, NULL, 5, '2020-08-11 14:46:10', '2020-08-11 14:46:26', 0, NULL);
 INSERT INTO `sys_menu` VALUES (21, '藏书查询', NULL, '/book', NULL, NULL, 2, '2020-08-11 14:46:10', '2020-08-11 14:46:10', 0, NULL);
+INSERT INTO `sys_menu` VALUES (22, '日志管理', NULL, '/logs', NULL, NULL, 1, '2020-09-10 20:01:32', '2020-09-10 20:01:34', 0, NULL);
 COMMIT;
 
 -- ----------------------------

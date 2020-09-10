@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cola.library.mapper.RoleMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cola.library.entity.RoleMenu">
+        <id column="id" property="id" />
+        <result column="role_id" property="roleId" />
+        <result column="menu_id" property="menuId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+    
+    <resultMap id="ListMenu" type="com.cola.library.model.dto.MenuDTO">
+        <id column="id" property="id"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="pid" property="pid"/>
+        <result column="order_by" property="orderBy"/>
+    </resultMap>
+
+    <select id="listAllMenu" resultMap="ListMenu">
+        SELECT
+            t1.id,t1.menu_name,t1.parent_id as pid, t1.order_by
+        FROM
+            sys_menu t1
+                JOIN role_menu t2 ON ( t1.id = t2.menu_id AND t1.deleted = 0 AND t2.deleted = 0 AND t2.role_id = #{roleId} )
+        ORDER BY
+            t1.order_by ASC
+    </select>
+
+</mapper>
